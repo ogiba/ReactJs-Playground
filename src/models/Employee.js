@@ -1,5 +1,5 @@
 class Employee {
-    constructor(name: String, lastName: String){
+    constructor(name, lastName){
         this.name = name;
         this.lastName = lastName;
     }
