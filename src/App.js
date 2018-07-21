@@ -7,7 +7,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      name: ""
+      name: "",
+      employees: []
     }
   }
 
@@ -19,8 +20,22 @@ class App extends Component {
     })
   }
 
+  addNewEmployee = (event) => {
+    let currentEmployees = this.state.employees
+
+    let name = event.target.value
+    let employee = new Employee(name, "Test")
+
+    currentEmployees.push(employee)
+
+    console.log(currentEmployees.length)
+    this.setState({
+      employees: currentEmployees
+    })
+  }
+
   render() {
-    const {name} = this.state
+    const { name, employees } = this.state
     let employee = new Employee("bobo", "test");
 
     return (
@@ -32,8 +47,15 @@ class App extends Component {
         <p className="App-intro">
           <div>Data binding test</div>
 
-          <input value={name} onChange={this.handleChange}/>
+          <input value={name} onChange={this.handleChange} />
           <div>{name}</div>
+          <button onClick={this.addNewEmployee}>Add new Employee</button>
+
+          <div>
+            {employees.map((employee) => {
+              return (<div>{employee.name}</div>)
+            })}
+          </div>
         </p>
       </div>
     );
