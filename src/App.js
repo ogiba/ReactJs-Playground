@@ -21,9 +21,9 @@ class App extends Component {
   }
 
   addNewEmployee = (event) => {
-    let currentEmployees = this.state.employees
+    var currentEmployees = this.state.employees
 
-    let name = event.target.value
+    let name = this.state.name
     let employee = new Employee(name, "Test")
 
     currentEmployees.push(employee)
@@ -36,7 +36,6 @@ class App extends Component {
 
   render() {
     const { name, employees } = this.state
-    let employee = new Employee("bobo", "test");
 
     return (
       <div className="App">
@@ -52,9 +51,22 @@ class App extends Component {
           <button onClick={this.addNewEmployee}>Add new Employee</button>
 
           <div>
-            {employees.map((employee) => {
-              return (<div>{employee.name}</div>)
-            })}
+            {JSON.stringify(employees)}
+            <table>
+              <thead>
+                <td>Fist name</td>
+                <td>Last name</td>
+              </thead>
+              <tbody>
+                {employees.map((employee) => {
+                  return (
+                    <tr>
+                      <td>{employee.name}</td>
+                      <td>{employee.lastName}</td>
+                    </tr>)
+                })}
+              </tbody>
+            </table>
           </div>
         </p>
       </div>
