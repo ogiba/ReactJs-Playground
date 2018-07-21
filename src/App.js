@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Employee from './models/Employee';
+import TableRowItem from './templates/TableRowItem'
 import './App.css';
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
 
     console.log(currentEmployees.length)
     this.setState({
+      name: "",
       employees: currentEmployees
     })
   }
@@ -44,31 +46,29 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          <div>Data binding test</div>
+          Data binding test
+        </p>
+        <input value={name} onChange={this.handleChange} />
+        <div>{name}</div>
+        <button onClick={this.addNewEmployee}>Add new Employee</button>
 
-          <input value={name} onChange={this.handleChange} />
-          <div>{name}</div>
-          <button onClick={this.addNewEmployee}>Add new Employee</button>
-
-          <div>
-            {JSON.stringify(employees)}
-            <table>
-              <thead>
+        <div>
+          {JSON.stringify(employees)}
+          <table>
+            <thead>
+              <tr>
                 <td>Fist name</td>
                 <td>Last name</td>
-              </thead>
-              <tbody>
-                {employees.map((employee) => {
-                  return (
-                    <tr>
-                      <td>{employee.name}</td>
-                      <td>{employee.lastName}</td>
-                    </tr>)
-                })}
-              </tbody>
-            </table>
-          </div>
-        </p>
+              </tr>
+            </thead>
+            <tbody>
+              {employees.map((employee) => {
+                return (<TableRowItem name={employee.name}
+                  lastName={employee.lastName} />)
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
