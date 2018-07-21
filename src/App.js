@@ -20,6 +20,7 @@ class App extends Component {
   }
 
   render() {
+    const {name} = this.state
     let employee = new Employee("bobo", "test");
 
     return (
@@ -30,9 +31,9 @@ class App extends Component {
         </header>
         <p className="App-intro">
           <div>Data binding test</div>
-          
-          <input value={this.state.name} onChange={this.handleChange}/>
-          <div>{this.state.name}</div>
+
+          <input value={name} onChange={this.handleChange}/>
+          <div>{name}</div>
         </p>
       </div>
     );
