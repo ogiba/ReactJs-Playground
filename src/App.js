@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Employee from './models/Employee';
 import TableRowItem from './templates/TableRowItem'
-import { EditTextView } from "./templates/EditTextView";
+import EditTextView  from "./templates/EditTextView";
 import './App.css';
 
 class App extends Component {
@@ -49,8 +49,7 @@ class App extends Component {
         <p className="App-intro">
           Data binding test
         </p>
-        <input value={name} onChange={this.handleChange} />
-        {/* <EditTextView /> */}
+        <EditTextView value={name} onChange={this.handleChange} hint="Insert new employee name"/>
         <div>{name}</div>
         <button onClick={this.addNewEmployee}>Add new Employee</button>
 

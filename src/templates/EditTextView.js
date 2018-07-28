@@ -7,7 +7,8 @@ class EditTextView extends Component {
     }
 
     render () {
-        return  <input value={this.props.name} 
+        return  <input value={this.props.value} 
+        placeholder={this.props.hint}
         onChange={this.props.onChange} />
     }
 }
