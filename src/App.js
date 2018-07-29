@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Employee from './models/Employee';
 import TableRowItem from './templates/TableRowItem'
 import EditTextView from "./templates/EditTextView";
+import { Route, Link} from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
