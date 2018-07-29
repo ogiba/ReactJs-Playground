@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Employee from './models/Employee';
 import TableRowItem from './templates/TableRowItem'
-import EditTextView  from "./templates/EditTextView";
+import EditTextView from "./templates/EditTextView";
 import './App.css';
 
 class App extends Component {
@@ -10,11 +10,12 @@ class App extends Component {
     super()
     this.state = {
       name: "",
+      lastName: "",
       employees: []
     }
   }
 
-  handleChange = (event) => {
+  handleFirstNameChange = (event) => {
     console.log(event.target.value);
 
     this.setState({
@@ -22,23 +23,33 @@ class App extends Component {
     })
   }
 
+  handleLastNameChange = (event) => {
+    console.log(event.target.value)
+
+    this.setState({
+      lastName: event.target.value
+    })
+  }
+
   addNewEmployee = (event) => {
     var currentEmployees = this.state.employees
 
     let name = this.state.name
-    let employee = new Employee(name, "Test")
+    let lastName = this.state.lastName
+    let employee = new Employee(name, lastName)
 
     currentEmployees.push(employee)
 
     console.log(currentEmployees.length)
     this.setState({
       name: "",
+      lastName: "",
       employees: currentEmployees
     })
   }
 
   render() {
-    const { name, employees } = this.state
+    const { name, lastName, employees } = this.state
 
     return (
       <div className="App">
@@ -49,8 +60,19 @@ class App extends Component {
         <p className="App-intro">
           Data binding test
         </p>
-        <EditTextView value={name} onChange={this.handleChange} hint="Insert new employee name"/>
-        <div>{name}</div>
+        <div>
+          <div>
+            <label>First name</label>
+          </div>
+          <EditTextView value={name} onChange={this.handleFirstNameChange} hint="Insert new employee first name" />
+        </div>
+        <div>
+          <div>
+            <label>Last name</label>
+          </div>
+          <EditTextView value={lastName} onChange={this.handleLastNameChange} hint="Insert new employee last name" />
+        </div>
+        <div>{name} {lastName}</div>
         <button onClick={this.addNewEmployee}>Add new Employee</button>
 
         <div>
