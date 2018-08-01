@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import Employee from '../models/Employee';
-import TableRowItem from '../templates/TableRowItem'
-import EditTextView from "../templates/EditTextView";
+import TableRowItem from '../components/TableRowItem'
+import EditTextView from "../components/EditTextView"
+import TableHeadView from "../components/TableHeadView"
 
 class Home extends Component {
     constructor() {
@@ -77,12 +78,7 @@ class Home extends Component {
             <div>
               {JSON.stringify(employees)}
               <table>
-                <thead>
-                  <tr>
-                    <td>Fist name</td>
-                    <td>Last name</td>
-                  </tr>
-                </thead>
+                <TableHeadView columns={["First Name", "Last Name"]}/>
                 <tbody>
                   {employees.map((employee) => {
                     return (<TableRowItem name={employee.name}
