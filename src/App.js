@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, BrowserRouter as Router, } from 'react-router-dom'
 import Home from "./scenes/Home"
+import NewEmployee from "./scenes/NewEmployee"
 import './App.css';
 
 class App extends Component {
@@ -13,6 +14,9 @@ class App extends Component {
           }} />
           <Route exact path="/test" render={() => {
             return <div>Routing test</div>
+          }} />
+           <Route exact path="/employee/new" render={() => {
+            return <NewEmployee />
           }} />
         </div>
       </Router>
